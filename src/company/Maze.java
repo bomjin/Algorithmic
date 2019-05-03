@@ -1,4 +1,4 @@
-package com.company;
+package company;
 
 public class Maze {
     private static int N=8;
@@ -34,16 +34,31 @@ public class Maze {
         else{
             maze[x][y] = PATH_COLOUR;
             if(findMazePath(x-1,y)||findMazePath(x,y+1)||findMazePath(x+1,y)||findMazePath(x,y-1))
-        return true;
+                return true;
         }
         maze[x][y] = BLOCKED_COLOUR; //dead end 가다가 길이 막히면 리턴 false; 다시 돌리기
         return false;
 
     }
-    public static void main(String [] args) {
-        Maze me =  new Maze();
-        findMazePath(0,0);
 
+    public static void printMaze() {
+        for (int i =0; i< maze.length; i++) {
+            for(int j =0; j< maze[i].length; i ++) {
+                System.out.print(maze[i][j]);
+
+                //한 줄이 끝이 아닐때
+                if(j != maze[i].length-1) {
+                    System.out.println(", ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+
+        findMazePath(0,0);
+        printMaze();
 
     }
 
